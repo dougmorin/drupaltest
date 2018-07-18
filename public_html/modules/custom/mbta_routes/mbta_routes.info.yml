@@ -1,0 +1,7 @@
+name: MBTA Routes
+project: 'mbta_route'
+type: module
+description: Provides the routes and schedule for the MBTA system
+configure: mbta_routes.settings
+package: Custom
+core: 8.x

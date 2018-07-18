@@ -1,0 +1,21 @@
+
+<style>
+  table td a,
+  table td a:active,
+  table td a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+</style>
+
+<table cellspacing="0" cellpadding="0" border="0">
+  {% for key, value in routes %}
+  <h2>{{ key }}</h2>
+  <table>
+    {% for route in value %}
+    <tr>
+      <td style="background-color: #{{ route.color }};"><a href="/mbta/routes/{{ route.url }}">{{ route.name }}</a></td>
+    </tr>
+  {% endfor %}
+  </table>
+{% endfor %}

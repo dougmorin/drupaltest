@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Author: Doug Morin
+# Description: Deletes composer/vendor data and reinstalls composer using
+#              fresh data
+
+read -p "Please verify that you are currently in the project root? (y/n) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+fi
+
+echo "./vendor folder moved to ./vendorold"
+mv ./vendor ./vendorold
+
+echo "composer.lock file deleted"
+rm -f composer.lock
+
+echo "composer cache cleared"
+composer clearcache
+
+echo "running composer install"
+composer install
+
+echo "removing problematic git folders"
+
+read -p "Would you like to delete the vendor backup file? (y/n) " -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+fi
+
+echo "...deleting the ./vendorold folder"
+rm -rf ./vendorold
+
+echo "script complete"
+
+exit 0

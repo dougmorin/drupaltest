@@ -1,0 +1,151 @@
+{
+    "name": "dougmorin0/drupaltest",
+    "description": "dug.",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Doug Morin",
+            "role": "Web Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.5",
+        "behat/mink": "~1.7",
+        "behat/mink-goutte-driver": "~1.2",
+        "composer-plugin-api": "^1.0.0",
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal-composer/drupal-scaffold": "^2.3",
+        "drupal/allowed_formats": "^1.1",
+        "drupal/antibot": "^1.2",
+        "drupal/config_devel": "^1.0",
+        "drupal/console": "~1.0",
+        "drupal/core": "^8.5",
+        "drupal/ctools": "^3.0",
+        "drupal/devel": "^1.0@RC",
+        "drupal/editor_advanced_link": "^1.4",
+        "drupal/extlink": "~1.0",
+        "drupal/field_help_helper": "^1.0",
+        "drupal/media_entity_image": "^1.2",
+        "drupal/menu_block": "^1.4",
+        "drupal/metatag": "^1.5",
+        "drupal/path_redirect_import": "^1.0@beta",
+        "drupal/pathauto": "^1.0",
+        "drupal/porterstemmer": "^1.0",
+        "drupal/redirect": "^1.0@alpha",
+        "drupal/restui": "^1.15",
+        "drupal/sendgrid_integration": "^1.2",
+        "drupal/shield": "^1.0",
+        "drupal/token": "^1.0",
+        "drupal/viewfield": "^3.0@alpha",
+        "drupal/weight": "^3.0",
+        "drush/drush": "8.x",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsstream": "~1.2",
+        "ml/json-ld": "^1.0",
+        "ocramius/proxy-manager": "^1.0",
+        "phpunit/phpunit": ">=4.8.28 <5",
+        "symfony/browser-kit": "^3.3",
+        "symfony/console": "~3.4",
+        "symfony/css-selector": "~2.8",
+        "symfony/expression-language": "^3.3",
+        "symfony/intl": "^3.3",
+        "symfony/process": "^3.4",
+        "symfony/property-access": "^3.3",
+        "symfony/proxy-manager-bridge": "^3.3",
+        "symfony/var-dumper": "^3.3",
+        "symfony/yaml": "3.4.5",
+        "webflo/drupal-finder": "^0.3.0",
+        "webmozart/path-util": "^2.3",
+        "zendframework/zend-authentication": "^2.5",
+        "zendframework/zend-cache": "^2.7",
+        "zendframework/zend-config": "^3.1",
+        "zendframework/zend-crypt": "^3.2",
+        "zendframework/zend-db": "^2.8",
+        "zendframework/zend-filter": "^2.7",
+        "zendframework/zend-http": "^2.6",
+        "zendframework/zend-hydrator": "^2.3",
+        "zendframework/zend-i18n": "^2.7",
+        "zendframework/zend-i18n-resources": "^2.5",
+        "zendframework/zend-json": "^3.0",
+        "zendframework/zend-json-server": "^3.0",
+        "zendframework/zend-math": "^3.0",
+        "zendframework/zend-mvc": "^3.1",
+        "zendframework/zend-navigation": "^2.8",
+        "zendframework/zend-paginator": "^2.7",
+        "zendframework/zend-permissions-acl": "^2.6",
+        "zendframework/zend-serializer": "^2.8",
+        "zendframework/zend-servicemanager": "^3.3",
+        "zendframework/zend-session": "^2.8",
+        "zendframework/zend-soap": "^2.6",
+        "zendframework/zend-validator": "^2.10",
+        "zendframework/zend-view": "^2.9",
+        "zendframework/zend-xml2json": "^3.0",
+        "zendframework/zend-xmlrpc": "^2.6"
+    },
+    "require-dev": {
+        "composer/composer": "dev-master",
+        "phpunit/phpunit": "^4.4.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "platform": {
+          "php": "5.6"
+        }
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "class": "DrupalComposer\\DrupalScaffold\\Plugin",
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        },
+        "installer-paths": {
+            "public_html/core": ["type:drupal-core"],
+            "public_html/libraries/{$name}": ["type:drupal-library"],
+            "public_html/modules/contrib/{$name}": ["type:drupal-module"],
+            "public_html/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "public_html/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "patches": {
+          "drupal/core": {
+              "Add theme page__403 page__404 for theming content of 403 and 404 responses": "https://www.drupal.org/files/issues/40x_error_theme_sugggestions-2363987-11.patch"
+          },
+          "drupal/redirect": {
+              "Provides support for wildcards in the redirect module": "https://www.drupal.org/files/issues/2018-03-16/support_for_wildcards-2831605-11.patch"
+          }
+        }
+    }
+}

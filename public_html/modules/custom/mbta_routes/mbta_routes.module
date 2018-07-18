@@ -1,0 +1,11 @@
+<?php
+
+function mbta_routes_theme($existing, $type, $theme, $path) {
+  return [
+    'route_template' => [
+      'variables' => [
+        'routes' => array(),
+      ],
+    ],
+  ];
+}

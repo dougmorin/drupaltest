@@ -1,0 +1,16 @@
+mbta_routes.route:
+  path: '/mbta/routes'
+  defaults:
+    _controller: '\Drupal\mbta_routes\Controller\MBTARoutesController::routes'
+    _title: 'MBTA Routes'
+  requirements:
+    _permission: 'access content'
+
+mbta_routes.schedule:
+  # This path takes dynamic arguments, which are enclosed in { }.
+  path: '/mbta/routes/{type}'
+  defaults:
+    _controller: '\Drupal\mbta_routes\Controller\MBTARoutesController::schedule'
+    _title: 'MBTA Routes Schedule'
+  requirements:
+    _permission: 'access content'

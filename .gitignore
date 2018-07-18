@@ -1,0 +1,8 @@
+# Ignore paths that contain user-generated content.
+public_html/sites/*/files/*
+public_html/sites/*/settings*.php
+public_html/sites/*/services.yml
+.sass-cache
+.DS_Store
+node_modules/*
+working/*
